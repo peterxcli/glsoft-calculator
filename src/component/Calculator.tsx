@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import useStorage from "@/lib/useStorage";
 import calculateInfixExpression from "@/lib/calculate";
+import { isNumber } from "@/lib/calculate";
 import styles from "./Calculator.module.scss"
 
 const App: React.FC = () => {
@@ -18,9 +19,9 @@ const App: React.FC = () => {
         } else if (value === "ac") {
             setExpression("");
         } else if (value === "m+") {
-            setMemory(memory + parseFloat(expression));
+            setMemory(memory + (isNumber(expression) ? parseFloat(expression) : 0));
         } else if (value === "m-") {
-            setMemory(memory - parseFloat(expression));
+            setMemory(memory - (isNumber(expression) ? parseFloat(expression) : 0));
         } else if (value === "mr") {
             setExpression(memory.toString());
         } else if (value === "mc") {
@@ -30,6 +31,19 @@ const App: React.FC = () => {
             setExpression(expression.slice(0, -1));
         }
         else {
+            if (value === ".") {
+                if (expression.endsWith(".")) {
+                    return;
+                }
+                if (expression === "") {
+                    value = "0.";
+                }
+            }
+            else if (!isNumber(value)) {
+                if (expression.endsWith(value) || expression === "") {
+                    return;
+                }
+            }
             setExpression(expression + value);
         }
     };

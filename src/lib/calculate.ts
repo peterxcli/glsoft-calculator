@@ -1,6 +1,6 @@
 import Big from "big.js";
 
-const isNumber = (token: string): boolean => /^\d*\.?\d*$/.test(token);
+export const isNumber = (token: string): boolean => /^\d*\.?\d*$/.test(token);
 
 const getPrecedence = (operator: string): number => {
     switch (operator) {
