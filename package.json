@@ -3,10 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "ts-node-esm generateThemes.ts",
     "dev": "next dev",
+
     "build": "next build",
+    "prebuild": "ts-node-esm generateThemes.ts",
+
     "start": "next start",
     "lint": "next lint",
+
+    "preexport": "ts-node-esm generateThemes.ts",
     "export": "next build && next export"
   },
   "type": "module",
@@ -15,7 +21,7 @@
     "@emotion/styled": "^11.10.6",
     "@mui/material": "^5.12.2",
     "@types/big.js": "^6.1.6",
-    "@types/node": "18.16.0",
+    "@types/node": "^18.16.1",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.0",
     "big.js": "^6.2.1",
@@ -25,11 +31,16 @@
     "decimal.js": "^10.4.3",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.1",
+    "fs": "^0.0.1-security",
+    "glob": "^10.2.2",
     "next": "13.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.62.1",
     "style-loader": "^3.3.2",
-    "typescript": "5.0.4"
+    "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
   }
 }

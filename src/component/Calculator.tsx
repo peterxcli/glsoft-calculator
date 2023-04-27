@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import styled from "@emotion/styled";
 import useStorage from "@/lib/useStorage";
 import calculateInfixExpression from "@/lib/calculate";
 import { isNumber } from "@/lib/calculate";
-import styles from "./Calculator.module.scss"
 
 const App: React.FC = () => {
     const [expression, setExpression] = useState("");
@@ -64,11 +62,11 @@ const App: React.FC = () => {
 
 
     return (
-        <div className={styles.container}>
-            <div className={styles.calculator}>
-                <input className={styles.input} value={expression} readOnly />
+        <div className="container">
+            <div className="calculator">
+                <input className="input" value={expression} readOnly />
                 {buttons.map((value) => (
-                    <button className={styles.button} key={value} onClick={() => handleButtonClick(value)}>
+                    <button className="button" key={value} onClick={() => handleButtonClick(value)}>
                         {value.toUpperCase()}
                     </button>
                 ))}
