@@ -23,7 +23,12 @@ const App: React.FC = () => {
         } else if (value === "m-") {
             setMemory(memory - (isNumber(expression) ? parseFloat(expression) : 0));
         } else if (value === "mr") {
-            setExpression(memory.toString());
+            if (isNumber(expression)) {
+                setExpression(memory.toString());
+            }
+            else if (!isNumber(expression.slice(-1))) {
+                setExpression(expression + memory.toString());
+            }
         } else if (value === "mc") {
             setMemory(0);
         }
